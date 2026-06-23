@@ -57,7 +57,7 @@
  
 #  #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #  # 2nd Problem save output in list and a disctionary for the future use.
- 
+ # logic for this code
 #     out_list = []
 #     out_dict = {}
     # out_list.append(output)
@@ -68,12 +68,13 @@
     
     
 
-
+#simple while loop code
 
 # i = 1
 # while i <= 10:
 #     print(i)
 #     i  += 1
+# second problem code for calculator with list and dictionary
 def add(a, b):
     return a + b
 def subtract(a, b):
