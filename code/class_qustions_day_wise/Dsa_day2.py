@@ -264,12 +264,11 @@ n = int(input("Enter a non-negative intweger to calculate its factorial: "))
 print(factorial(n))
 '''
 # ------->>>>>>> file handaling ------>>>>>>>>>>>
-file_obj = open("file_name.txt",'d')
-# #file_obj.write(". something")
-# print(file_obj.readline())
-# print(file_obj.readline())
-file_obj.delete()
-file_obj.close()
+# file_obj = open("file_name.txt",'d')
+# # #file_obj.write(". something")
+# # print(file_obj.readline())
+# # print(file_obj.readline())
+# file_obj.close()
 
 # a = 4
 
