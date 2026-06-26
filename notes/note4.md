@@ -1262,3 +1262,172 @@ Output:
 **What is `__add__()`?**
 
 `__add__()` is a special (magic) method used to overload the `+` operator for user-defined classes. When we write `obj1 + obj2`, Python internally calls `obj1.__add__(obj2)`. It allows us to define how two objects should be added together.
+
+
+-------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Enviroument where our program excuted 
+
+
+I think you're asking:
+
+> **"Where does our program go at compile time and runtime?"**
+
+### Program Execution Flow
+
+```text
+Source Code (.py)
+       |
+       v
+   Compiler
+       |
+       v
+ Byte Code (.pyc)
+       |
+       v
+ Python Virtual Machine (PVM)
+       |
+       v
+     Output
+```
+
+---
+
+## Compile Time
+
+**Compile Time** is when the source code is checked and converted into another form before execution.
+
+In Python:
+
+```python
+a = 10
+b = 20
+print(a + b)
+```
+
+Python first converts it into **Bytecode**.
+
+```text
+Source Code
+     ↓
+Compiler
+     ↓
+Bytecode (.pyc)
+```
+
+### What happens at Compile Time?
+
+* Syntax checking
+* Code translation to bytecode
+
+Example:
+
+```python
+print("Hello"
+```
+
+Output:
+
+```text
+SyntaxError: '(' was never closed
+```
+
+This error is found during compilation.
+
+---
+
+## Runtime
+
+**Runtime** is when the program is actually executing.
+
+```text
+Bytecode
+    ↓
+PVM (Python Virtual Machine)
+    ↓
+Execution
+```
+
+Example:
+
+```python
+a = 10
+b = 0
+print(a / b)
+```
+
+Output:
+
+```text
+ZeroDivisionError
+```
+
+The syntax is correct, so compilation succeeds.
+The error occurs while the program is running → Runtime Error.
+
+---
+
+## Memory Representation
+
+```text
+           RAM (Memory)
+      -------------------
+      | Code Segment    |
+      -------------------
+      | Stack Memory    |
+      -------------------
+      | Heap Memory     |
+      -------------------
+```
+
+### Stack Memory
+
+Stores:
+
+* Function calls
+* Local variables
+
+Example:
+
+```python
+x = 10
+```
+
+### Heap Memory
+
+Stores:
+
+* Objects
+* Lists
+* Dictionaries
+* Class objects
+
+Example:
+
+```python
+lst = [1, 2, 3]
+```
+
+The list object is stored in Heap Memory.
+
+---
+
+## Compile Time vs Runtime
+
+| Compile Time     | Runtime                         |
+| ---------------- | ------------------------------- |
+| Before execution | During execution                |
+| Syntax checking  | Actual execution                |
+| Creates bytecode | Runs bytecode                   |
+| SyntaxError      | RuntimeError, ZeroDivisionError |
+
+---
+
+### Interview Answer
+
+**Compile Time** is the phase where Python converts source code into bytecode and checks for syntax errors. **Runtime** is the phase where the Python Virtual Machine (PVM) executes the bytecode. Syntax errors occur at compile time, while errors like division by zero occur at runtime.
+
+runtime where our whole progam run or excute
+
+
+

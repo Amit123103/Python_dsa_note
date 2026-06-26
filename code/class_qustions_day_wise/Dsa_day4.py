@@ -227,17 +227,34 @@ Therefore abc(2,3) causes an error because Python only knows abc(a,b,c).'''
 # v2 = Vector(4, 1)
 # v3 = v1 + v2
 # v3.display()
-class Vector:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-    def __add__(self, obj):
-        return Vector(self.x + obj.x,self.y + obj.y)
-v1 = Vector(2, 3)
-v2 = Vector(4, 1)
-v3 = v1 + v2
-print("Vector: ",(v3.x, v3.y))
+# class Vector:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#     def __add__(self, obj):
+#         return Vector(self.x + obj.x,self.y + obj.y)
+# v1 = Vector(2, 3)
+# v2 = Vector(4, 1)
+# v3 = v1 + v2
+# print("Vector: ",(v3.x, v3.y))
+;'''Nested Dist
+students = {
+    "s1": {
+        "name": "Amit",
+        "age": 21
+    },
+    "s2": {
+        "name": "Rahul",
+        "age": 22
+    }
+}'''
+# var_dict = {
+#      'key1':{
+#          'subkey1': 'value1',
+#          'subkey2': 'value2'
+         
+#      }
+# }
+# print(var_dict['key1']['subkey2'])
 
-        
-    
-        
+#      boolean
