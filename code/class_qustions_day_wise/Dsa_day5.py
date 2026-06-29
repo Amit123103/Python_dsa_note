@@ -497,9 +497,16 @@ try-excep
 
 # 10  Create and Write File
 
-file = open("students.txt", "w")
-for i in range(5):
-    name = input("Enter student name: ")
-    file.write(name + "\n")
-file.close()
-print("Data Saved Successfully")
+# file = open("students.txt", "w")
+# for i in range(5):
+#     name = input("Enter student name: ")
+#     file.write(name + "\n")
+# file.close()
+# print("Data Saved Successfully")
+
+# 11. Read File 
+# file = open("students.txt", "r")
+# print(file.readline())
+# file.close()
+
+
