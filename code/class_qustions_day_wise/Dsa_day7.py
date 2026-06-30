@@ -24,3 +24,97 @@ class Linkedlist:
         node1.ref = None
         # node1.head = None(data)
         
+        
+# first creating first node
+# class Node:
+#     def __init__(self, data):
+#         self.data = data
+#         self.ref = None   # reference is None initially
+
+
+# # this is my Linked List class
+# class Linkedlist:
+#     def __init__(self):
+#         self.head = None
+
+#     # Insert new node at the beginning
+#     def insert_new(self, data):
+#         node1 = Node(data)
+#         node1.ref = self.head
+#         self.head = node1
+
+#     # Insert a new node between two nodes
+#     def insert_btw(self, data, prev):
+#         node1 = Node(data)
+#         node1.ref = prev.ref
+#         prev.ref = node1
+
+#     # Insert a new node at the end
+#     def insert_end(self, data):
+
+#         # Create a new node
+#         node1 = Node(data)
+
+#         # If the linked list is empty
+#         if self.head is None:
+#             self.head = node1
+#             return
+
+#         # Start from the first node
+#         n = self.head
+
+#         # Move to the last node
+#         while n.ref is not None:
+#             n = n.ref
+
+#         # Connect the last node to the new node
+#         n.ref = node1
+        
+        
+        
+# class Node:
+#     def __init__(self, data):
+#         self.data = data
+#         self.ref = None
+# class Linkedlist:
+#     def __init__(self):
+#         self.head = None
+#     def insert_end(self, data):
+#         new_node = Node(data)
+#         if self.head is None:
+#             self.head = new_node
+#             return
+#         current = self.head
+#         while current.ref is not None:
+#             current = current.ref
+#         current.ref = new_node
+#     def search(self, key):
+#         current = self.head
+#         while current is not None:
+#             if current.data == key:
+#                 print("Value Found")
+#                 return
+#             current = current.ref
+#         print("Value Not Found")
+# # Create linked list
+# ll = Linkedlist()
+# ll.insert_end(10)
+# ll.insert_end(20)
+# ll.insert_end(30)
+# ll.insert_end(40)
+# ll.search(30)
+# ll.search(100)
+
+
+#devlop a code find node using the data
+# finding nodes 
+def find_node(self, data):
+    current = self.head
+    while current:  # while loop using 
+        if current.data == data:
+            print("value found")
+            return current   # here found data then going to while loop 
+        current = current.ref
+        print("value Not")
+    # Data not found
+    return None
