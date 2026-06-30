@@ -456,3 +456,376 @@ class LinkedList:
 ```
 
 This is the standard implementation of inserting at the beginning and inserting after a given node in a **singly linked list**
+
+
+
+
+
+To **delete the last node** in a singly linked list, there are **three cases**:
+
+1. The list is empty.
+2. The list has only one node.
+3. The list has more than one node.
+
+## Code
+
+```python
+def delete_last(self):
+
+    # Case 1: Linked list is empty
+    if self.head is None:
+        print("Linked List is Empty")
+        return
+
+    # Case 2: Only one node
+    if self.head.ref is None:
+        self.head = None
+        return
+
+    # Case 3: More than one node
+    current = self.head
+
+    # Move to the second last node
+    while current.ref.ref is not None:
+        current = current.ref
+
+    # Delete the last node
+    current.ref = None
+```
+
+---
+
+## Example
+
+Before:
+
+```text
+Head
+ |
+ V
+10 → 20 → 30 → 40 → None
+```
+
+### Step 1
+
+`current` starts at `10`.
+
+### Step 2
+
+The loop:
+
+```python
+while current.ref.ref is not None:
+    current = current.ref
+```
+
+moves `current` until it reaches the **second last node** (`30`).
+
+Now:
+
+```text
+Head
+ |
+ V
+10 → 20 → 30 → 40 → None
+           ^
+        current
+```
+
+### Step 3
+
+```python
+current.ref = None
+```
+
+Now the list becomes:
+
+```text
+Head
+ |
+ V
+10 → 20 → 30 → None
+```
+
+The node containing `40` is no longer connected to the list, so it is effectively deleted.
+
+---
+
+### Why do we use `current.ref.ref`?
+
+We want to stop at the **second last node**, not the last one.
+
+Suppose:
+
+```text
+10 → 20 → 30 → 40 → None
+```
+
+When `current` is `30`:
+
+* `current.ref` is `40`
+* `current.ref.ref` is `None`
+
+So the loop stops, and we can simply do:
+
+```python
+current.ref = None
+```
+
+which removes the last node.
+
+
+
+
+Below is a **complete Singly Linked List program** that includes the most common operations asked in **CSE205/Data Structures**.
+
+```python
+# Node Class
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.ref = None
+
+
+# Linked List Class
+class Linkedlist:
+    def __init__(self):
+        self.head = None
+
+    # Insert at Beginning
+    def insert_new(self, data):
+        node = Node(data)
+        node.ref = self.head
+        self.head = node
+
+    # Insert at End
+    def insert_end(self, data):
+        node = Node(data)
+
+        if self.head is None:
+            self.head = node
+            return
+
+        current = self.head
+
+        while current.ref is not None:
+            current = current.ref
+
+        current.ref = node
+
+    # Find Node using Value
+    def find_node(self, value):
+
+        current = self.head
+
+        while current is not None:
+
+            if current.data == value:
+                return current
+
+            current = current.ref
+
+        return None
+
+    # Insert After a Given Value
+    def insert_btw(self, data, value):
+
+        prev = self.find_node(value)
+
+        if prev is None:
+            print("Value Not Found")
+            return
+
+        node = Node(data)
+        node.ref = prev.ref
+        prev.ref = node
+
+    # Search Value
+    def search(self, value):
+
+        current = self.head
+
+        while current is not None:
+
+            if current.data == value:
+                print("Value Found")
+                return
+
+            current = current.ref
+
+        print("Value Not Found")
+
+    # Delete First Node
+    def delete_first(self):
+
+        if self.head is None:
+            print("Linked List is Empty")
+            return
+
+        self.head = self.head.ref
+
+    # Delete Last Node
+    def delete_last(self):
+
+        if self.head is None:
+            print("Linked List is Empty")
+            return
+
+        if self.head.ref is None:
+            self.head = None
+            return
+
+        current = self.head
+
+        while current.ref.ref is not None:
+            current = current.ref
+
+        current.ref = None
+
+    # Delete by Value
+    def delete_node(self, value):
+
+        if self.head is None:
+            print("Linked List is Empty")
+            return
+
+        if self.head.data == value:
+            self.head = self.head.ref
+            return
+
+        current = self.head
+
+        while current.ref is not None:
+
+            if current.ref.data == value:
+                current.ref = current.ref.ref
+                return
+
+            current = current.ref
+
+        print("Value Not Found")
+
+    # Display Linked List
+    def display(self):
+
+        if self.head is None:
+            print("Linked List is Empty")
+            return
+
+        current = self.head
+
+        while current is not None:
+            print(current.data, end=" -> ")
+            current = current.ref
+
+        print("None")
+```
+
+---
+
+## Example
+
+```python
+ll = Linkedlist()
+
+ll.insert_new(20)
+ll.insert_new(10)
+ll.insert_end(30)
+ll.insert_end(40)
+
+ll.display()
+```
+
+Output:
+
+```
+10 -> 20 -> 30 -> 40 -> None
+```
+
+---
+
+### Search
+
+```python
+ll.search(30)
+```
+
+Output:
+
+```
+Value Found
+```
+
+---
+
+### Insert After Value
+
+```python
+ll.insert_btw(25, 20)
+```
+
+Output:
+
+```
+10 -> 20 -> 25 -> 30 -> 40 -> None
+```
+
+---
+
+### Delete First
+
+```python
+ll.delete_first()
+```
+
+Output:
+
+```
+20 -> 25 -> 30 -> 40 -> None
+```
+
+---
+
+### Delete Last
+
+```python
+ll.delete_last()
+```
+
+Output:
+
+```
+20 -> 25 -> 30 -> None
+```
+
+---
+
+### Delete by Value
+
+```python
+ll.delete_node(25)
+```
+
+Output:
+
+```
+20 -> 30 -> None
+```
+
+---
+
+## These are the main linked list operations commonly asked in CSE205:
+
+1. ✅ Create Node
+2. ✅ Create Linked List
+3. ✅ Insert at Beginning
+4. ✅ Insert at End
+5. ✅ Insert After a Value (Between)
+6. ✅ Search a Value
+7. ✅ Find a Node
+8. ✅ Delete First Node
+9. ✅ Delete Last Node
+10. ✅ Delete a Node by Value
+11. ✅ Display the Linked List
+
+Mastering these operations will prepare you for most singly linked list questions in exams.
