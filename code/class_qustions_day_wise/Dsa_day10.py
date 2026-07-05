@@ -56,17 +56,55 @@
 # graph.display()
 
 
+# DICT_GRAPH = {}
+
+# class Node:
+#     def __init__(self, data):
+#         self.data = data
+
+
+# class Structure:
+#     def create_node(self, data):
+#         node = Node(data)
+#         DICT_GRAPH[node.data] = []
+
+#     def create_relation(self, A, B):
+#         DICT_GRAPH[A].append(B)
+#         DICT_GRAPH[B].append(A)
+
+#     def display(self):
+#         for node in DICT_GRAPH:
+#             print(node, ":", DICT_GRAPH[node])
+
+
+# graph = Structure()
+
+# # Create Nodes
+# graph.create_node("A")
+# graph.create_node("B")
+# graph.create_node("C")
+# graph.create_node("D")
+
+# # Create Relations
+# graph.create_relation("A", "B")
+# graph.create_relation("A", "C")
+# graph.create_relation("B", "D")
+# graph.create_relation("C", "D")
+
+# # Display Graph
+# graph.display()
+
 DICT_GRAPH = {}
 
 class Node:
     def __init__(self, data):
         self.data = data
 
-
 class Structure:
     def create_node(self, data):
         node = Node(data)
-        DICT_GRAPH[node.data] = []
+        DICT_GRAPH[node] = []
+        return node
 
     def create_relation(self, A, B):
         DICT_GRAPH[A].append(B)
@@ -74,24 +112,22 @@ class Structure:
 
     def display(self):
         for node in DICT_GRAPH:
-            print(node, "->", DICT_GRAPH[node])
+            print(hex(id(node)), ":", [hex(id(n)) for n in DICT_GRAPH[node]])
 
 
 graph = Structure()
 
-# Create Nodes
-graph.create_node("A")
-graph.create_node("B")
-graph.create_node("C")
-graph.create_node("D")
+A = graph.create_node("A")
+B = graph.create_node("B")
+C = graph.create_node("C")
+D = graph.create_node("D")
 
-# Create Relations
-graph.create_relation("A", "B")
-graph.create_relation("A", "C")
-graph.create_relation("B", "D")
-graph.create_relation("C", "D")
+graph.create_relation(A, B)
+graph.create_relation(A, C)
+graph.create_relation(B, D)
+graph.create_relation(C, D)
 
-# Display Graph
 graph.display()
+
 
 
