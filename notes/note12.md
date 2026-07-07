@@ -2918,3 +2918,235 @@ which is the **sorted order**.
 | Total Average     | **O(n log n)** |
 
 This is the standard BST-based sorting approach (often called **Tree Sort**).
+
+
+
+# Use Cases of Binary Search Tree (BST)
+
+A **Binary Search Tree (BST)** is used when data needs to be **stored in sorted order** while allowing **fast searching, insertion, and deletion**.
+
+---
+
+## 1. Fast Searching 🔍
+
+Find an element quickly.
+
+**Example:**
+
+* Search for a student's roll number.
+* Search for an employee ID.
+
+**Time Complexity (Average):** **O(log n)**
+
+---
+
+## 2. Database Indexing 🗂️
+
+Databases use tree-based structures (often balanced BSTs like AVL or Red-Black Trees) to quickly find records.
+
+**Example:**
+
+```text
+Employee ID → Employee Details
+```
+
+Instead of checking every record, the tree helps locate the correct one efficiently.
+
+---
+
+## 3. Dictionary / Spell Checker 📖
+
+Words are stored in sorted order for quick lookup.
+
+**Example:**
+
+```text
+Apple
+Ball
+Cat
+Dog
+```
+
+Searching for `"Cat"` is much faster than scanning every word.
+
+---
+
+## 4. Contact List 📱
+
+Store contacts by name or phone number.
+
+**Example:**
+
+```text
+Amit
+Ankit
+Rahul
+Rohan
+```
+
+Searching for **Rahul** takes fewer comparisons.
+
+---
+
+## 5. Leaderboard / Ranking 🏆
+
+Store players' scores.
+
+**Example:**
+
+```text
+95
+87
+76
+65
+```
+
+You can quickly:
+
+* Insert a new score.
+* Find the highest or lowest score.
+* Display scores in sorted order.
+
+---
+
+## 6. File System 📂
+
+Files and folders can be organized in a tree-like structure.
+
+**Example:**
+
+```text
+Documents
+Downloads
+Pictures
+Videos
+```
+
+Searching for a file becomes more efficient.
+
+---
+
+## 7. Compiler / Symbol Table 💻
+
+Compilers store variable and function names.
+
+**Example:**
+
+```text
+int age;
+float salary;
+char grade;
+```
+
+The compiler quickly checks whether a variable already exists.
+
+---
+
+## 8. E-Commerce 🛒
+
+Products can be stored by:
+
+* Price
+* Product ID
+* Rating
+
+Example:
+
+```text
+₹100
+₹200
+₹350
+₹500
+```
+
+You can quickly search or display products in sorted order.
+
+---
+
+## 9. Library Management 📚
+
+Books stored by:
+
+* ISBN
+* Title
+* Author
+
+Searching for a book is faster than checking every record.
+
+---
+
+## 10. Gaming 🎮
+
+Games use trees to maintain:
+
+* Player rankings
+* High scores
+* Matchmaking data
+
+---
+
+# Why Use a BST?
+
+Suppose you have:
+
+```text
+20, 10, 30, 5, 15, 25, 40
+```
+
+BST:
+
+```text
+        20
+       /  \
+     10    30
+    / \   / \
+   5 15 25 40
+```
+
+Searching for **25**:
+
+```text
+20
+ ↓
+30
+ ↓
+25
+```
+
+Only **3 comparisons** are needed instead of checking every element.
+
+---
+
+# Advantages
+
+* ✅ Fast searching
+* ✅ Fast insertion
+* ✅ Fast deletion
+* ✅ Keeps data sorted
+* ✅ Inorder traversal gives sorted output
+
+---
+
+# Disadvantages
+
+* ❌ If the tree becomes **skewed** (unbalanced), operations can degrade to **O(n)**.
+* ❌ More complex than arrays or linked lists.
+
+---
+
+# Time Complexity
+
+| Operation | Average      | Worst    |
+| --------- | ------------ | -------- |
+| Search    | **O(log n)** | **O(n)** |
+| Insert    | **O(log n)** | **O(n)** |
+| Delete    | **O(log n)** | **O(n)** |
+
+---
+
+# Interview Answer (Short)
+
+> **Binary Search Tree (BST)** is used when data must remain **sorted** while supporting **fast searching, insertion, and deletion**. Common applications include **database indexing, dictionaries, contact lists, file systems, leaderboards, e-commerce product catalogs, and library management systems**. On average, these operations take **O(log n)** time.
+
+
+

@@ -175,25 +175,25 @@ Moves the larger element toward the end.'''
 
 
 
-def search(var, element):
-    var.sort()
-    low = 0
-    high = len(var) - 1
+# def search(var, element):
+#     var.sort()
+#     low = 0
+#     high = len(var) - 1
 
-    while low <= high:
-        mid_index = (low + high) // 2
-        if var[mid_index] == element:
-            print(f"{element} found at index {mid_index}")
-            return
-        elif var[mid_index] < element:
-            low = mid_index + 1
-        else:
-            high = mid_index - 1
-    print("Element not found")
+#     while low <= high:
+#         mid_index = (low + high) // 2
+#         if var[mid_index] == element:
+#             print(f"{element} found at index {mid_index}")
+#             return
+#         elif var[mid_index] < element:
+#             low = mid_index + 1
+#         else:
+#             high = mid_index - 1
+#     print("Element not found")
 
 
-var = [2, 100, 9, 105, 10, 20, 15, 36, 55, 42]
-search(var, 20)
+# var = [2, 100, 9, 105, 10, 20, 15, 36, 55, 42]
+# search(var, 20)
      
      
 # def search(var, target):
@@ -221,3 +221,158 @@ search(var, 20)
 # sort = [2, 100, 9, 105, 10, 20, 15, 36, 55, 42]
 
 # print(search(sort, 20))
+
+ # in this question where in list number add digits like 1+1+1 = 3 like this all list number we need 
+ # in single digit number we need to print like where we adding 899 = 8+9+9 = 26the agai need to add 2+6= 8 when
+ # where i can get single number of out of list number different different we need signle number output value
+#var = [111, 501, 100, 515, 424, 899, 991, 605, 103, 1104]
+
+# var = [111, 501, 100, 515, 424, 899, 991, 605, 103, 1104]
+
+# list = []
+# for num in var:
+#     while num > 9:
+#         total = 0
+#         for digit in str(num):
+#             total += int(digit)
+#         num = total
+#     list.append(num)
+# print(list)
+
+
+# using linkedlist to solve this problem
+
+# class Node:
+#     def __init__(self, data):
+#         self.data = data
+#         self.next = None
+
+
+# class LinkedList:
+#     def __init__(self):
+#         self.head = None
+#     def insert(self, data):
+#         new_node = Node(data)
+#         if self.head is None:
+#             self.head = new_node
+#         else:
+#             temp = self.head
+#             while temp.next:
+#                 temp = temp.next
+#             temp.next = new_node
+#     def digital_sum(self):
+#         temp = self.head
+#         while temp:
+#             num = temp.data
+#             while num > 9:
+#                 total = 0
+#                 for digit in str(num):
+#                     total += int(digit)
+#                 num = total
+#             print(num)
+#             temp = temp.next
+
+
+# list = LinkedList()
+
+# var = [111, 501, 100, 515, 424, 899, 991, 605, 103, 1104]
+# for i in var:
+#     list.insert(i)
+# list.digital_sum()
+
+
+ # i need t take a input of list pattern of input 1,2,3,4,5 and output i want [1,2,3,4,5]
+ 
+ 
+ # Take input like: 1,2,3,4,5
+
+# num = input("Enter numbers: ")
+# num = list(map(int, num.split(",")))
+# print(num)
+
+
+# def Input():
+#     num = input("Enter numbers: ")
+#     num = list(map(int, num.split(",")))
+#     return num
+
+# output = list()
+# print(output)
+'''
+*       *
+* *   * *
+    *
+* *   * *
+*       *
+
+'''
+
+# star = [
+#     "*       *",
+#     "* *   * *",
+#     "    *",
+#     "* *   * *",
+#     "*       *"
+# ]
+
+# for line in star:
+#     print(line)
+
+
+
+# for i in range(5):
+#     if i == 0 or i == 4:
+#         print("*", end="")
+#         for j in range(7):
+#             print(" ", end="")
+#         print("*")
+
+#     elif i == 1 or i == 3:
+#         print("*", end="")
+#         print(" ", end="")
+#         print("*", end="")
+#         for j in range(3):
+#             print(" ", end="")
+#         print("*", end="")
+#         print(" ", end="")
+#         print("*")
+
+#     else:
+#         for j in range(4):
+#             print(" ", end="")
+      #   print("*")
+      
+'''
+*       *
+* *   * *
+    *
+* *   * *
+*       *
+
+'''
+      
+
+for i in range(5):
+    for j in range(9):
+        if i == 0 or i == 4:
+            if j == 0 or j == 8:
+                print("*", end="")
+            else:
+                print(" ", end="")
+        elif i == 1 or i == 3:
+            if j == 0 or j == 2 or j == 6 or j == 8:
+                print("*", end="")
+            else:
+                print(" ", end="")
+        else:
+            if j == 4:
+                print("*", end="")
+            else:
+                print(" ", end="")
+    print()
+    
+    
+
+
+
+
