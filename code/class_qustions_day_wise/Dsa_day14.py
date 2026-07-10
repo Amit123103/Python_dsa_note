@@ -270,7 +270,7 @@ rich library to display the graph in a table format
 
 # root.mainloop()
 
-
+'''Solving this kivy to solving this '''
 
 # import kivy
 # kivy.require("2.3.0")
