@@ -730,3 +730,5 @@ The finally block is used to execute important cleanup code such as closing file
 Short Definition for Exam
 
 finally is used to execute a block of code that must run under all circumstances, whether an exception occurs or not.
+
+
