@@ -18,7 +18,7 @@ Input:
 Output:
 False
 '''
-# License: https://bit.ly/3oLErEI
+
 
 # Define a function named 'test' that takes a list 'nums' as input
 def test(nums):
