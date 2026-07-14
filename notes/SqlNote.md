@@ -933,3 +933,238 @@ The database listens on port **3306** for incoming MySQL connections.
 16. Explain the difference between a database and a DBMS.
 
 These concepts form the foundation of SQL and database management and are commonly covered in interviews, university exams, and software development projects.
+
+
+To create a table with columns like **ID, Name, Mobile, Email, and Date of Birth**, we use the SQL **`CREATE TABLE`** command.
+
+---
+
+# Step 1: Create a Database
+
+First, create a database.
+
+```sql
+CREATE DATABASE CollegeDB;
+```
+
+---
+
+# Step 2: Use the Database
+
+```sql
+USE CollegeDB;
+```
+
+Now all tables will be created inside **CollegeDB**.
+
+---
+
+# Step 3: Create a Table
+
+```sql
+CREATE TABLE Students (
+    ID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Mobile VARCHAR(15),
+    Email VARCHAR(100),
+    DateOfBirth DATE
+);
+```
+
+---
+
+## Explanation
+
+```sql
+ID INT PRIMARY KEY
+```
+
+* **ID** → Column name
+* **INT** → Integer data type
+* **PRIMARY KEY** → Unique value, cannot be duplicated
+
+Example:
+
+| ID |
+| -- |
+| 1  |
+| 2  |
+| 3  |
+
+---
+
+```sql
+Name VARCHAR(100)
+```
+
+* Stores text (letters)
+* Maximum length = 100 characters
+
+Example:
+
+```text
+Amit
+Rahul
+Neha
+```
+
+---
+
+```sql
+Mobile VARCHAR(15)
+```
+
+Why `VARCHAR` instead of `INT`?
+
+Because mobile numbers:
+
+* Can start with `0`
+* May contain `+91`
+* Are not used for calculations
+
+Example:
+
+```text
+9876543210
++919876543210
+```
+
+---
+
+```sql
+Email VARCHAR(100)
+```
+
+Stores email addresses.
+
+Example:
+
+```text
+amit@gmail.com
+rahul@yahoo.com
+```
+
+---
+
+```sql
+DateOfBirth DATE
+```
+
+Stores dates.
+
+Format:
+
+```text
+YYYY-MM-DD
+```
+
+Example:
+
+```text
+2004-05-18
+```
+
+---
+
+# Table Structure
+
+| Column Name | Data Type    | Description   |
+| ----------- | ------------ | ------------- |
+| ID          | INT          | Student ID    |
+| Name        | VARCHAR(100) | Student Name  |
+| Mobile      | VARCHAR(15)  | Mobile Number |
+| Email       | VARCHAR(100) | Email Address |
+| DateOfBirth | DATE         | Birth Date    |
+
+---
+
+# Visual Representation
+
+```
+Database
+│
+└── CollegeDB
+      │
+      └── Students
+              │
+              ├── ID
+              ├── Name
+              ├── Mobile
+              ├── Email
+              └── DateOfBirth
+```
+
+---
+
+# Step 4: Insert Data
+
+```sql
+INSERT INTO Students
+(ID, Name, Mobile, Email, DateOfBirth)
+VALUES
+(1, 'Amit', '9876543210', 'amit@gmail.com', '2004-05-18');
+```
+
+Insert another student:
+
+```sql
+INSERT INTO Students
+(ID, Name, Mobile, Email, DateOfBirth)
+VALUES
+(2, 'Rahul', '9876500000', 'rahul@gmail.com', '2003-10-25');
+```
+
+---
+
+# Step 5: View the Data
+
+```sql
+SELECT * FROM Students;
+```
+
+Output:
+
+| ID | Name  | Mobile     | Email                                     | DateOfBirth |
+| -- | ----- | ---------- | ----------------------------------------- | ----------- |
+| 1  | Amit  | 9876543210 | [amit@gmail.com](mailto:amit@gmail.com)   | 2004-05-18  |
+| 2  | Rahul | 9876500000 | [rahul@gmail.com](mailto:rahul@gmail.com) | 2003-10-25  |
+
+---
+
+# Common Data Types
+
+| Data Type    | Used For          | Example             |
+| ------------ | ----------------- | ------------------- |
+| `INT`        | Whole numbers     | 1, 25, 100          |
+| `VARCHAR(n)` | Text              | Amit, Delhi         |
+| `CHAR(n)`    | Fixed-length text | Gender (`M`, `F`)   |
+| `DATE`       | Date              | 2004-05-18          |
+| `TIME`       | Time              | 10:30:45            |
+| `DATETIME`   | Date and time     | 2026-07-14 11:30:00 |
+| `FLOAT`      | Decimal numbers   | 85.5                |
+| `BOOLEAN`    | True/False        | TRUE                |
+
+---
+
+## A Better Version (Recommended)
+
+In real-world projects, it's common to let the database generate IDs automatically:
+
+```sql
+CREATE TABLE Students (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Mobile VARCHAR(15) UNIQUE NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    DateOfBirth DATE NOT NULL
+);
+```
+
+### Why use these constraints?
+
+* **AUTO_INCREMENT** → Automatically generates IDs (1, 2, 3, ...)
+* **PRIMARY KEY** → Each row has a unique identifier.
+* **NOT NULL** → This field cannot be left empty.
+* **UNIQUE** → Prevents duplicate mobile numbers or email addresses.
+
+This is the version you'll most often see in professional applications.
