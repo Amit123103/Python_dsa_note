@@ -1168,3 +1168,17 @@ CREATE TABLE Students (
 * **UNIQUE** → Prevents duplicate mobile numbers or email addresses.
 
 This is the version you'll most often see in professional applications.
+
+
+schema - represent the data tables
+
+what mysql workbench  and why we need it?
+sql is high level language and computer and my databse  work with as midiater for it  that's why we use it my sql workbench
+
+
+in administration server status--
+Host: User Hosting user name 
+Socket: where intract with application is by dfault genrate by software to create piline to connect with it
+Port: where local port run make it perfeclty to run it
+
+
