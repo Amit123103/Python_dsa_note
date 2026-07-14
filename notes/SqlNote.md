@@ -1457,3 +1457,5 @@ Memcached Plugin	In-memory cache for frequently accessed data	Speeds up applicat
 SSL	Encrypts client-server communication	Protects data in transit
 
 These definitions are suitable for exams and also give you the practical understanding you'll need when building Python applications that use MySQL.
+
+
