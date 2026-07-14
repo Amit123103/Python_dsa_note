@@ -1181,4 +1181,11 @@ Host: User Hosting user name
 Socket: where intract with application is by dfault genrate by software to create piline to connect with it
 Port: where local port run make it perfeclty to run it
 
+available server features
 
+performance shchema : optimize relations between a form mediator where optimazide relation between 
+
+thread pool = Inter depenmdent process(concurrent processes)
+where user have different type stages like  stages , level and admin 
+
+memcached plugin --- 
