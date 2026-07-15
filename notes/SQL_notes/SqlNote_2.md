@@ -1751,4 +1751,180 @@ Imagine you're building and running a school:
 | **DQL**      | Reads the data                       |
 | **TCL**      | Controls transactions                |
 | **DCL**      | Controls user access and permissions |
-    
+
+
+# 📚 SQL Notes – Creating a Table
+
+A **table** is a collection of rows and columns used to store related data in a database.
+
+For example, a **Customer** table stores information about customers such as their name, phone number, and email.
+
+---
+
+# Syntax of `CREATE TABLE`
+
+```sql
+CREATE TABLE table_name (
+    column_name1 datatype constraints,
+    column_name2 datatype constraints,
+    column_name3 datatype constraints
+);
+```
+
+### Explanation
+
+* **CREATE TABLE** → Creates a new table in the selected database.
+* **table_name** → The name of the table.
+* **column_name** → The name of each field (column).
+* **datatype** → Specifies the type of data the column can store.
+* **constraints** → Rules applied to the column (such as `PRIMARY KEY`, `UNIQUE`, `NOT NULL`, etc.).
+
+---
+
+# Example: Customer Table
+
+```sql
+USE ecom;
+
+CREATE TABLE customer (
+    name VARCHAR(100),
+    mobile BIGINT UNIQUE,
+    email VARCHAR(100) UNIQUE
+);
+```
+
+---
+
+# Column Explanation
+
+| Column No. | Column Name | Data Type      | Constraint | Explanation                                                                                                                                                                       |
+| ---------- | ----------- | -------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1          | `name`      | `VARCHAR(100)` | None       | Stores the customer's name. `VARCHAR(100)` means it can store up to 100 characters.                                                                                               |
+| 2          | `mobile`    | `BIGINT`       | `UNIQUE`   | Stores the customer's mobile number. `BIGINT` is used because phone numbers can be larger than the range of `INT`. `UNIQUE` ensures no two customers have the same mobile number. |
+| 3          | `email`     | `VARCHAR(100)` | `UNIQUE`   | Stores the customer's email address. `VARCHAR(100)` stores text up to 100 characters. `UNIQUE` ensures every email address is different.                                          |
+
+---
+
+# Why These Data Types?
+
+### 1. `VARCHAR`
+
+* Used for **text values**.
+* Stores letters, numbers, and special characters.
+* The number inside parentheses specifies the maximum number of characters.
+
+Example:
+
+```sql
+name VARCHAR(100)
+```
+
+Possible values:
+
+```text
+Amit
+Rahul Sharma
+Priya Gupta
+```
+
+---
+
+### 2. `BIGINT`
+
+* Used for **large whole numbers**.
+* A mobile number (e.g., `9876543210`) is too large for a regular `INT` in many cases, so `BIGINT` is the safer choice.
+
+Example:
+
+```sql
+mobile BIGINT
+```
+
+Possible value:
+
+```text
+9876543210
+```
+
+---
+
+### 3. `UNIQUE`
+
+* Prevents duplicate values in a column.
+* Ensures each value appears only once.
+
+Example:
+
+```sql
+mobile BIGINT UNIQUE
+```
+
+Allowed:
+
+```text
+9876543210
+9123456789
+9988776655
+```
+
+Not allowed:
+
+```text
+9876543210
+9876543210   ❌ Duplicate value
+```
+
+---
+
+### 4. `email`
+
+Stores email addresses as text.
+
+```sql
+email VARCHAR(100) UNIQUE
+```
+
+Examples:
+
+```text
+amit@gmail.com
+rahul@yahoo.com
+priya@outlook.com
+```
+
+Duplicate emails are **not allowed** because of the `UNIQUE` constraint.
+
+---
+
+# Understanding the Table
+
+```text
+customer
+---------------------------------------------------
+| Name          | Mobile      | Email             |
+---------------------------------------------------
+| Amit          | 9876543210  | amit@gmail.com    |
+| Rahul         | 9123456789  | rahul@gmail.com   |
+| Priya         | 9988776655  | priya@gmail.com   |
+---------------------------------------------------
+```
+
+* **Rows (Records):** Each horizontal entry represents one customer.
+* **Columns (Fields):** `name`, `mobile`, and `email` are the fields that store different types of information.
+
+---
+
+# Summary
+
+| SQL Keyword    | Purpose                                             |
+| -------------- | --------------------------------------------------- |
+| `USE ecom;`    | Selects the `ecom` database.                        |
+| `CREATE TABLE` | Creates a new table.                                |
+| `name`         | Column to store customer names.                     |
+| `VARCHAR(100)` | Stores text up to 100 characters.                   |
+| `mobile`       | Column to store phone numbers.                      |
+| `BIGINT`       | Stores large integer values such as mobile numbers. |
+| `UNIQUE`       | Ensures values in the column are not duplicated.    |
+| `email`        | Column to store email addresses.                    |
+
+> **Note:** Although some beginners use `INT` for mobile numbers, **`BIGINT` or `VARCHAR(15)` is recommended** because phone numbers are identifiers, not values used for mathematical calculations. They may also include country codes (e.g., `+91`) or leading zeros.
