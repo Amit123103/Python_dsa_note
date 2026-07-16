@@ -18,3 +18,15 @@ parent child property
 
 in forien key is bi directional
 when two tables connect with each other with need to cnnect with reference object with connecting with first table with that refercnce key connect with first table called forien key
+
+
+### Types of JOIN
+
+1. inner
+2. outer
+3. left
+4. right
+5. full
+important join -- ### natural join, cross 
+
+
