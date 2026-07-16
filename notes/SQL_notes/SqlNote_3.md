@@ -30,3 +30,13 @@ when two tables connect with each other with need to cnnect with reference objec
 important join -- ### natural join, cross 
 
 
+combining two tables in diffenre t  to join the table
+
+
+
+
+Outer join where two metho d to joing first make relation to join and second isolated comman data and output it  and 1 one one more otimize but complicated
+
+
+
+
