@@ -141,3 +141,378 @@ index_hint:
 
 index_list:
     index_name [, index_name] ...
+
+# 💻 SQL Code Examples – Keys & JOINs
+
+# 1. Create a Database
+
+```sql
+CREATE DATABASE CollegeDB;
+USE CollegeDB;
+```
+
+---
+
+# 2. Create Students Table (Primary Key)
+
+```sql
+CREATE TABLE Students (
+    Student_ID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50) NOT NULL,
+    Age INT,
+    Email VARCHAR(100)
+);
+```
+
+### Insert Data
+
+```sql
+INSERT INTO Students (Name, Age, Email)
+VALUES
+('Amit',20,'amit@gmail.com'),
+('Rahul',21,'rahul@gmail.com'),
+('Priya',19,'priya@gmail.com');
+```
+
+### View Data
+
+```sql
+SELECT * FROM Students;
+```
+
+Output
+
+| Student_ID | Name  | Age | Email                                     |
+| ---------- | ----- | --- | ----------------------------------------- |
+| 1          | Amit  | 20  | [amit@gmail.com](mailto:amit@gmail.com)   |
+| 2          | Rahul | 21  | [rahul@gmail.com](mailto:rahul@gmail.com) |
+| 3          | Priya | 19  | [priya@gmail.com](mailto:priya@gmail.com) |
+
+---
+
+# 3. Update Data
+
+```sql
+UPDATE Students
+SET Age = 22
+WHERE Student_ID = 2;
+```
+
+---
+
+# 4. Delete Data
+
+```sql
+DELETE FROM Students
+WHERE Student_ID = 3;
+```
+
+---
+
+# 5. Create Parent Table
+
+```sql
+CREATE TABLE Department (
+    Department_ID INT PRIMARY KEY,
+    Department_Name VARCHAR(50)
+);
+```
+
+Insert Data
+
+```sql
+INSERT INTO Department
+VALUES
+(101,'Computer Science'),
+(102,'Mechanical'),
+(103,'Electrical');
+```
+
+---
+
+# 6. Create Child Table (Foreign Key)
+
+```sql
+CREATE TABLE Student_Department (
+
+    Student_ID INT,
+    Department_ID INT,
+
+    FOREIGN KEY (Student_ID)
+    REFERENCES Students(Student_ID),
+
+    FOREIGN KEY (Department_ID)
+    REFERENCES Department(Department_ID)
+
+);
+```
+
+Insert Data
+
+```sql
+INSERT INTO Student_Department
+VALUES
+(1,101),
+(2,102),
+(3,101);
+```
+
+---
+
+# 7. Foreign Key with ON DELETE CASCADE
+
+```sql
+CREATE TABLE Orders (
+
+    Order_ID INT PRIMARY KEY,
+    Student_ID INT,
+
+    FOREIGN KEY (Student_ID)
+    REFERENCES Students(Student_ID)
+    ON DELETE CASCADE
+
+);
+```
+
+Insert Data
+
+```sql
+INSERT INTO Orders
+VALUES
+(1,1),
+(2,2),
+(3,1);
+```
+
+Delete Student
+
+```sql
+DELETE FROM Students
+WHERE Student_ID = 1;
+```
+
+Result:
+
+All Orders having `Student_ID = 1` are deleted automatically.
+
+---
+
+# 8. INNER JOIN
+
+```sql
+SELECT
+Students.Student_ID,
+Students.Name,
+Department.Department_Name
+
+FROM Student_Department
+
+INNER JOIN Students
+ON Student_Department.Student_ID = Students.Student_ID
+
+INNER JOIN Department
+ON Student_Department.Department_ID = Department.Department_ID;
+```
+
+Output
+
+```
+1  Amit   Computer Science
+2  Rahul  Mechanical
+3  Priya  Computer Science
+```
+
+---
+
+# 9. LEFT JOIN
+
+```sql
+SELECT
+Students.Student_ID,
+Students.Name,
+Student_Department.Department_ID
+
+FROM Students
+
+LEFT JOIN Student_Department
+ON Students.Student_ID = Student_Department.Student_ID;
+```
+
+All students are shown. If a student has no department, Department_ID will be NULL.
+
+---
+
+# 10. RIGHT JOIN
+
+```sql
+SELECT
+Students.Student_ID,
+Students.Name,
+Student_Department.Department_ID
+
+FROM Students
+
+RIGHT JOIN Student_Department
+ON Students.Student_ID = Student_Department.Student_ID;
+```
+
+All records from `Student_Department` are shown.
+
+---
+
+# 11. FULL OUTER JOIN
+
+> **Note:** MySQL does **not** support `FULL OUTER JOIN` directly.
+
+Use this alternative:
+
+```sql
+SELECT *
+FROM Students
+LEFT JOIN Student_Department
+ON Students.Student_ID = Student_Department.Student_ID
+
+UNION
+
+SELECT *
+FROM Students
+RIGHT JOIN Student_Department
+ON Students.Student_ID = Student_Department.Student_ID;
+```
+
+---
+
+# 12. CROSS JOIN
+
+```sql
+SELECT
+Students.Name,
+Department.Department_Name
+
+FROM Students
+
+CROSS JOIN Department;
+```
+
+Output
+
+```
+Amit    Computer Science
+Amit    Mechanical
+Amit    Electrical
+Rahul   Computer Science
+Rahul   Mechanical
+Rahul   Electrical
+Priya   Computer Science
+Priya   Mechanical
+Priya   Electrical
+```
+
+---
+
+# 13. NATURAL JOIN
+
+Suppose two tables have the same column name (`Department_ID`).
+
+```sql
+SELECT *
+FROM Student_Department
+NATURAL JOIN Department;
+```
+
+MySQL automatically joins on the common column.
+
+---
+
+# 14. Find a Student by ID
+
+```sql
+SELECT *
+FROM Students
+WHERE Student_ID = 2;
+```
+
+---
+
+# 15. Find Students Older Than 20
+
+```sql
+SELECT *
+FROM Students
+WHERE Age > 20;
+```
+
+---
+
+# 16. Sort Students by Name
+
+```sql
+SELECT *
+FROM Students
+ORDER BY Name ASC;
+```
+
+---
+
+# 17. Count Total Students
+
+```sql
+SELECT COUNT(*) AS Total_Students
+FROM Students;
+```
+
+---
+
+# 18. Drop a Table
+
+```sql
+DROP TABLE Student_Department;
+```
+
+---
+
+# 19. Drop a Database
+
+```sql
+DROP DATABASE CollegeDB;
+```
+
+---
+
+# 📌 Execution Order
+
+```sql
+CREATE DATABASE CollegeDB;
+
+USE CollegeDB;
+
+CREATE TABLE Students (...);
+
+CREATE TABLE Department (...);
+
+CREATE TABLE Student_Department (...);
+
+INSERT INTO Students ...;
+
+INSERT INTO Department ...;
+
+INSERT INTO Student_Department ...;
+
+SELECT * FROM Students;
+
+SELECT * FROM Department;
+
+SELECT * FROM Student_Department;
+
+-- Practice JOINs
+
+INNER JOIN
+
+LEFT JOIN
+
+RIGHT JOIN
+
+CROSS JOIN
+
+NATURAL JOIN
+```
