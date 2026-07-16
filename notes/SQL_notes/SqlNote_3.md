@@ -12,3 +12,9 @@ two properties of primary key
 2. ondelete coscade -- when we delte row or first record in tabel then can't retrive an dand also not going to add gain 1 id if delte and going to start with 2 always
 
 
+#### what is forien key
+
+parent child property
+
+in forien key is bi directional
+when two tables connect with each other with need to cnnect with reference object with connecting with first table with that refercnce key connect with first table called forien key
