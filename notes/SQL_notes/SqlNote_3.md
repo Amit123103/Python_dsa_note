@@ -1,0 +1,1 @@
+IN c=when inserting data into table where we assigning the ID name nad  and in vaule we storing it and we can't chnges thoes values
